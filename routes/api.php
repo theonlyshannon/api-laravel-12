@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\PermissionController;
 
 // use App\Http\Controllers\Api\BrandController;
 
@@ -22,6 +23,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/me', [AuthController::class, 'me']);
     Route::post('/logout', [AuthController::class, 'logout']);
 
-    Route::apiResource('role', RoleController::class);
+    Route::apiResource('roles', RoleController::class);
+
+    Route::apiResource('permissions', PermissionController::class);
 
 });

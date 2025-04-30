@@ -8,15 +8,16 @@ use Illuminate\Support\ServiceProvider;
      *
      * Import Interface
      */
-use App\Interfaces\ExampleRepositoryInterface;
 use App\Interfaces\AuthRepositoryInterface;
-
+use App\Interfaces\PermissionRepositoryInterface;
+use App\Interfaces\RoleRepositoryInterface;
     /**
      *
      * Import Repository
      */
-use App\Repositories\ExampleRepository;
 use App\Repositories\AuthRepository;
+use App\Repositories\PermissionRepository;
+use App\Repositories\RoleRepository;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -27,8 +28,9 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind(ExampleRepositoryInterface::class, ExampleRepository::class);
         $this->app->bind(AuthRepositoryInterface::class, AuthRepository::class);
+        $this->app->bind(PermissionRepositoryInterface::class, PermissionRepository::class);
+        $this->app->bind(RoleRepositoryInterface::class, RoleRepository::class);
     }
 
     /**
