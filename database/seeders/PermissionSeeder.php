@@ -14,17 +14,20 @@ class PermissionSeeder extends Seeder
      */
     public function run(): void
     {
-        // User permissions
         Permission::create(['name' => 'users-list']);
         Permission::create(['name' => 'users-create']);
         Permission::create(['name' => 'users-edit']);
         Permission::create(['name' => 'users-delete']);
 
-        // Brand permissions
-        Permission::create(['name' => 'brands-list']);
-        Permission::create(['name' => 'brands-create']);
-        Permission::create(['name' => 'brands-edit']);
-        Permission::create(['name' => 'brands-delete']);
+        Permission::create(['name' => 'roles-list']);
+        Permission::create(['name' => 'roles-create']);
+        Permission::create(['name' => 'roles-edit']);
+        Permission::create(['name' => 'roles-delete']);
+
+        Permission::create(['name' => 'permissions-list']);
+        Permission::create(['name' => 'permissions-create']);
+        Permission::create(['name' => 'permissions-edit']);
+        Permission::create(['name' => 'permissions-delete']);
 
         // Assign permissions to roles
         $adminRole = Role::findByName('admin');
@@ -37,16 +40,23 @@ class PermissionSeeder extends Seeder
             'users-edit',
             'users-delete',
 
-            'brands-list',
-            'brands-create',
-            'brands-edit',
-            'brands-delete'
+            'roles-list',
+            'roles-create',
+            'roles-edit',
+            'roles-delete',
+
+            'permissions-list',
+            'permissions-create',
+            'permissions-edit',
+            'permissions-delete',
+
         ]);
 
         // User only gets view permissions
         $userRole->givePermissionTo([
-            'brands-list',
             'users-list',
+            'roles-list',
+            'permissions-list'
         ]);
     }
 }
